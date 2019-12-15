@@ -1,0 +1,116 @@
+body{
+    margin: 0 !important;
+    padding: 0 !important;
+    background: url("https://upload.wikimedia.org/wikipedia/commons/7/7d/Cidade_de_Nobres_vista_do_alto.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.background-filter {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgb(255,255,255);
+    background: linear-gradient(180deg, rgba(255,255,255,0.6755077030812324) 34%, rgba(0,181,255,0.2553396358543417) 69%, rgba(0,181,255,0.45702030812324934) 100%);
+    z-index: -1;
+}
+
+.logo {
+    margin: 15px 25px;
+}
+
+.logo > i {
+    font-size: 35px;
+    margin-right: 5px;
+}
+
+.logo > h3 {
+    font-weight: 700;
+}
+
+.form-group {
+    margin: 0 !important;
+}
+
+#main {
+    position: relative;
+    width: 100%;
+    height: 97vh;
+}
+
+.wrap-right-panel, .wrap-left-panel{
+    height: 100%;
+    width: 50%;
+    position: relative;
+}
+
+.left-panel, .right-panel{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 10px 15px;
+    width: 80%;
+
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    border: 2px dashed #004263;
+}
+
+.searchbar-container > label {
+    font-weight: 500;
+}
+
+.searchbar-container > div > button {
+    margin-left: 25px;
+}
+
+.result__info-panel > div {
+    width: fit-content;
+}
+
+.indicator-container:first-child {
+    margin-left: 0;
+}
+
+.indicator-container {
+    margin-left: 15px;
+    display: flex;
+}
+
+.indicator-container > .wrap-text {
+    padding: 4px 0;
+}
+
+.indicator-container > i {
+    margin-right: 10px;
+    font-size: 30px;
+    color: #015896;
+}
+
+.center{
+    margin: 0 auto;
+}
+
+.btn-green {
+    font-weight: 500;
+    color: #fff;
+    background-color: #003c63;
+    border-color: #024f88;
+}
+
+#footer {
+    width: 100%;
+    height: 3vh !important;
+    background: #003c63;
+    color: white;
+    font-weight: 500;
+    border-top: 3px solid #024f88;
+}
+
+#footer > div {
+    position: absolute;
+    right: 2vh;
+    bottom: 0;
+}
