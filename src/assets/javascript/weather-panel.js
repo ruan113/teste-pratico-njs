@@ -1,21 +1,22 @@
 function searchForCity() {
     const path = '/search/' + $('input').val();
-    console.log('path: ', path);
+    $('.searchbar-container, .result__info-panel')
+        .css("display", "none");
+    $('.not-found').css("display", "block");
+    $('.not-found').children('span').text("loading...");
     $.ajax({
         url: path,
         type: 'GET',
         dataType: 'json',
         success: function (data) {
+            if (data.errors) {
+                $('.not-found').children('span').text(data.errors);
+                return;
+            }
+
             $('.searchbar-container, .result__info-panel')
                 .css("display", "block");
             $('.not-found').css("display", "none");
-
-            if (data.errors) {
-                $('.searchbar-container, .result__info-panel')
-                    .css("display", "none");
-                $('.not-found').css("display", "block");
-                return;
-            }
 
             console.log('cidade: ', data);
 
@@ -49,9 +50,9 @@ function searchForCity() {
 
             // Adiciona cidade no historico de ultimas pesquisas
             $('.last-results').children('ul').append(`<li> 
-                    ${data.name + ', ' + data.main.temp + '°C, '
+                    ${data.name + ', ' + Math.round(data.main.temp) + '°C, '
             + data.weather[0].description.charAt(0).toUpperCase()
-            + data.weather[0].description.substring(1)} </li>`)
+            + data.weather[0].description.substring(1)} a 0 minuto(s) atrás </li>`);
         }
     });
 }

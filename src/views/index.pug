@@ -32,18 +32,19 @@ html
         section#main
             div.wrap-left-panel.float-left
                 div.left-panel
-                    div.searchbar-container.d-flex
+                    div.searchbar-container.d-flex(style='display: none')
                         span Digite a Cidade
                         input(name="cityName" type="text" class="form-control")
-                    div.result__info-panel
+                    div.result__info-panel(style='display: none')
                         h4#cityName São Francisco, EUA
                         small#data Sábado, 12:30 PM, Ensolarado
                         h3#temp 23°C
                         div.humidity-info.d-flex
                             i.fas.fa-cloud-download-alt
                             span#humidity 48%
-                    div.not-found(style='display: none')
-                        span Cidade não encontrada!
+                        i.fas.fa-cloud
+                    div.not-found
+                        span Digite uma cidade!
             div.wrap-right-panel.float-left
                 div.right-panel
                     div.top-results-panel

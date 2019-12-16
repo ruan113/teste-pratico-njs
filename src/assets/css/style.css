@@ -2,45 +2,145 @@
     height: 300px;
 }
 
-.left-panel {
-    background: grey;
-    border: 1px solid grey;
+.left-panel, .right-panel {
+    background: #f9f9f9;
+    border: 1px solid #e4e4e4;
     width: 500px;
     height: 100%;
     box-shadow: 0px 4px 11px #888888;
-}
-
-.right-panel {
-    width: 500px;
-    height: 100%;
-    border: 1px solid grey;
-    box-shadow: 0px 4px 11px #888888;
+    border-radius: 3px;
 }
 
 .left-panel, .right-panel {
     margin: 10px 5px;
 }
 
+/*---------- Left-Panel Components (INICIO) ----------*/
 .searchbar-container {
     background: white;
-    padding: 2px 5px;
+    height: 50px;
+    padding: 8px 10px;
+    border-radius: 3px;
+    box-shadow: 0px 3px 4px #88888882;
+}
+
+.searchbar-container > span {
+    width: 35%;
+    padding: 5px 0;
+    font-weight: 600;
 }
 
 .searchbar-container > select {
     width: fit-content;
 }
 
+.result__info-panel {
+    position: relative;
+    padding: 5px 10px;
+    height: calc(100% - 50px);
+}
+
+.result__info-panel > #cityName {
+    margin: 0;
+}
+
+.result__info-panel > #data {
+    color: grey;
+}
+
+.result__info-panel > #temp {
+    margin: 0;
+    color: grey;
+    margin-top: 45px;
+    margin-left: 5px;
+    font-size: 55px;
+    font-weight: 400;
+}
+
+.result__info-panel > .humidity-info {
+    position: absolute;
+    bottom: 10px;
+    left: 15px;
+}
+
+.result__info-panel > .humidity-info > i {
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.result__info-panel > .humidity-info > span {
+    margin-right: 10px;
+    font-size: 12px;
+}
+
+.result__info-panel > i {
+    position: absolute;
+    right: 100px;
+    top: 50%;
+    font-size: 120px;
+    transform: translateY(-50%);
+    color: #9c9c9c;
+}
+
+
+.not-found {
+    width: 100%;
+    height: calc(100% - 50px);
+    position: relative;
+}
+
+.not-found > span {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    text-align: center;
+    font-size: 30px;
+    color: grey;
+    padding: 0 10px;
+}
+/*---------- Left-Panel Components (FIM) ----------*/
+
 .top-results-panel {
-    border: 1px solid grey;
+    border: 1px solid #efefef;
+    border-radius: 3px;
+    background: white;
+    padding: 3px 10px;
 }
 
-.city-container {
-    background: grey;
+.top-results-panel > span {
+    font-weight: 600;
+}
+
+.cities-container {
+    margin-bottom: 3px;
+}
+
+.cities-container > .city-container {
+    background: #f1f1f1;
     border-radius: 20px;
-    margin: 5px;
     padding: 5px;
+    font-size: 13px;
+    margin: auto;
+    width: 80px;
+    text-align: center;
+    font-weight: 600;
 }
 
-.last-results > ul > li{
+.last-results {
+    width: 100%;
+    height: calc(100% - 71px);
+    border-top: 1px solid #e4e4e4;
+    margin-top: 7px;
+    background: white;
+    overflow: auto;
+}
+
+.last-results > ul {
+    margin: 0;
+}
+
+.last-results > ul > li {
     list-style-type: none;
+    margin: 10px 0;
 }
