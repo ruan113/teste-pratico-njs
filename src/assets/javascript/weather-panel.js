@@ -1,3 +1,18 @@
+$(document).ready(function () {
+    atualizarTopResults();
+});
+
+$('input').keypress(function (e) {
+    if (e.which == 13) {
+        searchForCity();
+    }
+});
+
+$('.city-container').click(function () {
+    $('input').val($(this).children('span').text());
+    searchForCity();
+})
+
 function searchForCity() {
     const path = '/search/' + $('input').val();
     $('.searchbar-container, .result__info-panel')
@@ -17,8 +32,6 @@ function searchForCity() {
             $('.searchbar-container, .result__info-panel')
                 .css("display", "block");
             $('.not-found').css("display", "none");
-
-            console.log('cidade: ', data);
 
             //Formatação da data para exibição
             const date = new Date();
@@ -48,22 +61,60 @@ function searchForCity() {
             $('#temp').text(Math.round(data.main.temp) + '°C');
             $('#humidity').text(data.main.humidity + '%');
 
+            if($('.last-results').children('ul').children('li').length >= 5){
+                $('.last-results').children('ul').find('li:first-child').remove();
+            }
+
             // Adiciona cidade no historico de ultimas pesquisas
             $('.last-results').children('ul').append(`<li> 
                     ${data.name + ', ' + Math.round(data.main.temp) + '°C, '
             + data.weather[0].description.charAt(0).toUpperCase()
             + data.weather[0].description.substring(1)} a 0 minuto(s) atrás </li>`);
+
+            checkDataBase(data.id);
         }
     });
 }
 
-$('input').keypress(function (e) {
-    if (e.which == 13) {
-        searchForCity();
-    }
-});
+function checkDataBase(cidadeId) {
+    $.ajax({
+        url: '/city/' + cidadeId,
+        type: 'GET',
+        dataType: 'json',
+        success: function (data) {
+            atualizarTopResults();
+        }
+    });
+}
 
-$('.city-container').on('click', function () {
-    $('input').val($(this).children('span').text());
-    searchForCity();
-})
+function atualizarTopResults() {
+    $.ajax({
+        url: '/getTopResults',
+        type: 'GET',
+        dataType: 'json',
+        success: function (data) {
+
+            $('.cities-container').empty();
+
+            data.forEach(cidade => {
+                $('.cities-container').append(`
+                        <div class="city-container">
+                            <span>${cidade.name}</span>
+                        </div>
+                    `);
+            });
+        },
+        statusCode: {
+            404: function () {
+                $('.cities-container').css('display', 'none');
+                $('.no-results').css('display', 'block');
+                $('.no-results').children('span').text('Não há cidades no Top 5!')
+            },
+            200: function () {
+                $('.cities-container').css('display', 'flex');
+                $('.no-results').css('display', 'none');
+            }
+        }
+    });
+}
+
