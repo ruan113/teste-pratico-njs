@@ -3,6 +3,8 @@ const router = express.Router();
 const openWeatherMap = require('./../providers/open-weather-map.js')
 const database = require('./../providers/database.js');
 
+const router = express.Router();
+
 router.get('/', (req, res, next) => {
     res.render('index');
 });

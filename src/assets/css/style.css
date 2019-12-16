@@ -102,6 +102,7 @@
 
 /*---------- Left-Panel Components (FIM) ----------*/
 
+/*---------- Right-Panel Components (INICIO) ----------*/
 .top-results-panel {
     border: 1px solid #efefef;
     border-radius: 3px;
@@ -155,3 +156,4 @@
 .no-results {
     text-align: center;
 }
+/*---------- Right-Panel Components (FIM) ----------*/
