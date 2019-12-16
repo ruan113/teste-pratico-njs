@@ -11,6 +11,7 @@ router.get('/search', (req, res, next) => {
     res.status(400).send({errors: 'Digite o nome de uma cidade!'});
 });
 
+// ------------------- Rotas auxiliares para as funções AJAX -------------------
 router.get('/search/:cityName', (req, res, next) => {
     openWeatherMap.getCurrentWeatherByCityName(req.params.cityName).then((data) => {
         if(data.cod && data.cod === '404') {

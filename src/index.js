@@ -11,8 +11,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 //Routes
 app.use('', viewRoutes);
 app.use(express.static(__dirname + '/assets'));
-
 app.set('views', __dirname + '/views');
+
+//Set pug como engine html do projeto
 app.set('view engine', 'pug');
 
 app.listen(process.env.PORT || '3000', () => {
