@@ -15,5 +15,14 @@ module.exports = {
                 }
             );
         });
+    },
+    getCurrentWeatherByCityId: function (id) {
+        return new Promise((resolve, reject) => {
+            request.get(`https://api.openweathermap.org/data/2.5/weather?id=${id}&units=${config.units}&APPID=${config.APPID}&lang=${config.lang}`,
+                (err, data) => {
+                    resolve(JSON.parse(data.body));
+                }
+            );
+        });
     }
 }
